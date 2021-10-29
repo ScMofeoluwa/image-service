@@ -4,3 +4,4 @@ Pipfile.lock
 __pycache__
 .idea
 .DS_Store
+site.db
