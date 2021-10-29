@@ -18,9 +18,11 @@ def init_app():
     app.config.from_object(Config)
 
     db.init_app(app)
+    migrate.init_app(app, db)
     bcrypt.init_app(app)
     login_manager.init_app(app)
-    migrate.init_app(app, db)
 
     with app.app_context():
+        from .resource import resource_bp
+        app.register_blueprint(resource_bp)
         return app
