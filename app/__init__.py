@@ -24,5 +24,12 @@ def init_app():
 
     with app.app_context():
         from .resource import resource_bp
+        from .entity.user_entity import UserModel
+
         app.register_blueprint(resource_bp)
+
+        @login_manager.user_loader
+        def load_user(user_id):
+            return UserModel.query.get(int(user_id))
+
         return app
