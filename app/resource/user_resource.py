@@ -36,7 +36,7 @@ class UserLogin(Resource):
 
         if user and user.verify_hash(user.password, user_json["password"]):
             login_user(user)
-            return {"message": "login successful"}, 200
+            return {"api_key": user.api_key}, 200
 
         return {"message": "Invalid credentials!"}, 401
 
