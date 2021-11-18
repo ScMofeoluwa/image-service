@@ -1,4 +1,5 @@
 from .. import db, bcrypt
+import secrets
 from flask_login import UserMixin
 
 
@@ -17,3 +18,7 @@ class UserModel(db.Model, UserMixin):
     @staticmethod
     def verify_hash(hash_pwd, password):
         return bcrypt.check_password_hash(hash_pwd, password)
+
+    @staticmethod
+    def generate_api_key() -> str:
+        return secrets.token_hex(16)

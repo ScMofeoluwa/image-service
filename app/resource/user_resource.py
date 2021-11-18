@@ -12,7 +12,6 @@ class UserRegister(Resource):
         try:
             user_json = request.get_json()
             user = user_schema.load(request.get_json())
-            print('load')
         except ValidationError as err:
             return err.messages, 400
 
@@ -20,6 +19,7 @@ class UserRegister(Resource):
             return {"message": "user with username already exists"}, 400
 
         user.password = user.generate_hash(user.password)
+        user.api_key = user.generate_api_key()
         UserUsecase.register(user)
 
         return {"message": "user created successfully"}, 201
