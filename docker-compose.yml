@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  api:
+    container_name: api-container
+    build: .
+    entrypoint: python wsgi.py 
+    env_file: 
+      - .env
+    ports:
+      - "5000:5000"
+  
+  redis:
+    image: redis:6.2.5-alpine
+    container_name: redis-container
+    ports:
+      - "6379:6379"
