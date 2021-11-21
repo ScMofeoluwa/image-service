@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
+from flask_caching import Cache
 from .config.config import Config
 
 ma = Marshmallow()
@@ -11,6 +12,7 @@ db = SQLAlchemy()
 migrate = Migrate()
 login_manager = LoginManager()
 bcrypt = Bcrypt()
+cache = Cache()
 
 
 def init_app():
@@ -21,6 +23,7 @@ def init_app():
     migrate.init_app(app, db)
     bcrypt.init_app(app)
     login_manager.init_app(app)
+    cache.init_app(app)
 
     with app.app_context():
         from .resource import resource_bp
