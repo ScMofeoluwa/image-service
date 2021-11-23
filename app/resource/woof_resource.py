@@ -11,7 +11,7 @@ class Woof(Resource):
         API_URL = "https://random.dog/woof.json"
         res = []
         for i in range(amount):
-            r = requests.get(API_URL)
-            image_url = r.json()["url"]
+            r = requests.get(API_URL).json()
+            image_url = r["url"]
             res.append({"image_name": "dog", "image_url": image_url})
         return res, 200

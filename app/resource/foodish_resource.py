@@ -1,5 +1,4 @@
 import requests
-from math import ceil
 from .. import cache
 from ..utils import api_key_required
 from flask_restful import Resource

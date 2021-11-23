@@ -4,6 +4,8 @@ from ..resource.user_resource import UserRegister, UserLogin, UserLogout
 from ..resource.woof_resource import Woof
 from ..resource.picsum_resource import Picsum
 from ..resource.foodish_resource import Foodish
+from ..resource.randomcat_resource import RandomCat
+from ..resource.randomfox_resource import RandomFox
 
 resource_bp = Blueprint("resource", __name__)
 api = Api(resource_bp, prefix="/api/v1")
@@ -14,3 +16,5 @@ api.add_resource(UserLogout, "/logout")
 api.add_resource(Woof, "/woof/<int:amount>")
 api.add_resource(Picsum, "/picsum/<int:amount>")
 api.add_resource(Foodish, "/foodish/<int:amount>")
+api.add_resource(RandomCat, "/randomcat/<int:amount>")
+api.add_resource(RandomFox, "/randomfox/<int:amount>")
