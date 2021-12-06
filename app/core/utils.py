@@ -1,6 +1,6 @@
 from flask import request
 from functools import wraps
-from .entity.user_entity import UserModel
+from app.entity.user_entity import UserModel
 
 
 def api_key_required(f):
